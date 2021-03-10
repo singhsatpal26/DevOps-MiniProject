@@ -5,4 +5,4 @@ FROM tomcat:8-jre8
 MAINTAINER "satpalsingh101070@gmail.com"
 
 # copy war file onto conatiner
-COPY /opt/docker/DevOpsMiniproject.war /usr/local/tomcat/webapps
+COPY DevOpsMiniproject.war /usr/local/tomcat/webapps
