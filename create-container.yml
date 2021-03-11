@@ -1,0 +1,13 @@
+---
+  - hosts: web-servers
+    become: true
+    tasks:
+     - name: stop previous version docker
+       shell: docker stop miniproject_image
+     - name: remove stopped container
+       shell: docker rm -f miniproject_image	  
+     - name: remove docker images
+       shell: docker image rm -f satpal101070/miniproject_image
+       
+     - name: create docker image
+       shell: docker run -d --name miniproject_image -p 8090:8080 satpal101070/miniproject_image
