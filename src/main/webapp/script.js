@@ -11,24 +11,41 @@ function squareRoot()
 function factorial()
 {
 	num = document.getElementById("number").value;
-	if(num < 0 || isNaN(num.value))
+	if(isNaN(num))
 	{
 		document.getElementById("result").innerHTML = NaN;
 	}
-	else if(num.value == 0)
-	{
-		document.getElementById("result").innerHTML = 1;
-	}
 	else
 	{
-
-			fact = 1;
-			for(i=1; i<=num.value; i++)
+		if(isInt(num))
+		{
+			if(num == 0)
 			{
-				fact = fact * i;
+				document.getElementById("result").innerHTML = 1;	
 			}
-			document.getElementById("result").innerHTML = fact;
+			else if (num < 0)
+			{
+				document.getElementById("result").innerHTML = NaN;
+			}
+			else
+			{
+				fact = 1;
+				for(i=1; i<=num; i++)
+				{
+					fact = fact * i;
+				}
+				document.getElementById("result").innerHTML = fact;
+			}
+		}
+		else
+		{
+			document.getElementById("result").innerHTML = NaN;
+		}
 	}
+}
+
+function isInt(value) {
+  return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value))
 }
 
 function log()
