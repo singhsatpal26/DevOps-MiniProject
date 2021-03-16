@@ -1,0 +1,103 @@
+@BeforeTest
+WebDriver driver = new ChromeDriver();
+
+@Test
+public void Test1(){
+  driver.get("http://localhost:8090/DevOpsMinProject/SquareRoot.jsp");
+  WebElement i = driver.findElement(By.id("number"));
+  JavascriptExecutor j = (JavascriptExecutor)driver;
+  j.executeScript("arguments[0].value=49;", i);
+  driver.findElement(By.value("submit")).click();
+  Webelement result = driver.findElement(By.id("result"));
+  Assert.assertEquals(result, 7);
+}
+
+@Test
+public void Test2(){
+  driver.get("http://localhost:8090/DevOpsMinProject/SquareRoot.jsp");
+  WebElement i = driver.findElement(By.id("number"));
+  JavascriptExecutor j = (JavascriptExecutor)driver;
+  j.executeScript("arguments[0].value=-6;", i);
+  driver.findElement(By.value("submit")).click();
+  Webelement result = driver.findElement(By.id("result"));
+  Assert.assertEquals(result, NaN);
+}
+
+@Test
+public void Test3(){
+  driver.get("http://localhost:8090/DevOpsMinProject/SquareRoot.jsp");
+  WebElement i = driver.findElement(By.id("number"));
+  JavascriptExecutor j = (JavascriptExecutor)driver;
+  j.executeScript("arguments[0].value='notanumber';", i);
+  driver.findElement(By.value("submit")).click();
+  Webelement result = driver.findElement(By.id("result"));
+  Assert.assertEquals(result, NaN);
+}
+
+@Test
+public void Test4(){
+  driver.get("http://localhost:8090/DevOpsMinProject/Factorial.jsp");
+  WebElement i = driver.findElement(By.id("number"));
+  JavascriptExecutor j = (JavascriptExecutor)driver;
+  j.executeScript("arguments[0].value=5;", i);
+  driver.findElement(By.value("submit")).click();
+  Webelement result = driver.findElement(By.id("result"));
+  Assert.assertEquals(result, 120);
+}
+
+@Test
+public void Test5(){
+  driver.get("http://localhost:8090/DevOpsMinProject/Factorial.jsp");
+  WebElement i = driver.findElement(By.id("number"));
+  JavascriptExecutor j = (JavascriptExecutor)driver;
+  j.executeScript("arguments[0].value=0;", i);
+  driver.findElement(By.value("submit")).click();
+  Webelement result = driver.findElement(By.id("result"));
+  Assert.assertEquals(result, 1);
+}
+
+@Test
+public void Test6(){
+  driver.get("http://localhost:8090/DevOpsMinProject/Factorial.jsp");
+  WebElement i = driver.findElement(By.id("number"));
+  JavascriptExecutor j = (JavascriptExecutor)driver;
+  j.executeScript("arguments[0].value='notanumber';", i);
+  driver.findElement(By.value("submit")).click();
+  Webelement result = driver.findElement(By.id("result"));
+  Assert.assertEquals(result, NaN);
+}
+
+@Test
+public void Test7(){
+  driver.get("http://localhost:8090/DevOpsMinProject/Log.jsp");
+  WebElement i = driver.findElement(By.id("number"));
+  JavascriptExecutor j = (JavascriptExecutor)driver;
+  j.executeScript("arguments[0].value=10;", i);
+  driver.findElement(By.value("submit")).click();
+  Webelement result = driver.findElement(By.id("result"));
+  Assert.assertEquals(result, 2.3026);
+}
+
+@Test
+public void Test8(){
+  driver.get("http://localhost:8090/DevOpsMinProject/Log.jsp");
+  WebElement i = driver.findElement(By.id("number"));
+  JavascriptExecutor j = (JavascriptExecutor)driver;
+  j.executeScript("arguments[0].value='notanumber';", i);
+  driver.findElement(By.value("submit")).click();
+  Webelement result = driver.findElement(By.id("result"));
+  Assert.assertEquals(result, NaN);
+}
+
+@Test
+public void Test9(){
+  driver.get("http://localhost:8090/DevOpsMinProject/PowerFunction.jsp");
+  WebElement i = driver.findElement(By.id("number"));
+  WebElement k = driver.findElement(By.id("power_number"));
+  JavascriptExecutor j = (JavascriptExecutor)driver;
+  j.executeScript("arguments[0].value=2;", i);
+  j.executeScript("arguments[0].value=5;", k);
+  driver.findElement(By.value("submit")).click();
+  Webelement result = driver.findElement(By.id("result"));
+  Assert.assertEquals(result, 32);
+}
